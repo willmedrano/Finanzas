@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ControladorCartera extends Controller
+class controladorBitacora extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,14 @@ class ControladorCartera extends Controller
     {
         $this->middleware('auth');
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $bita=\App\Bitacora::all();
+        return view('bitacoras.bitacorasv', compact('bita'));
     }
 
     /**
@@ -30,9 +35,7 @@ class ControladorCartera extends Controller
      */
     public function create()
     {
-         $emple=\App\cliente::All();
-   
-         return view('carteras.registrocartera',compact('emple'));
+        //
     }
 
     /**

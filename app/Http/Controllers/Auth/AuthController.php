@@ -7,7 +7,10 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Auth;
+use Session;
+use App\Http\Requests\loginRequest;
+use Carbon\Carbon;
 class AuthController extends Controller
 {
     /*
@@ -39,27 +42,34 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+     protected function getLogin()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        return view('usuarios.login');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+
+       
+
+        public function postLogin(loginRequest $request)
+   {
+  
+
+     if (Auth::attempt( ['email'=>$request['email'], 'password'=>$request['password']] ))
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+      date_default_timezone_set("America/El_Salvador");
+        $h= "" . date("h:i:s:a");;
+     
+        $date = Carbon::now();
+ \App\Bitacora::create([
+            'descripcion' => "Iniciado Sesion en el Sistema",
+            'hora' => $h,
+            'fecha' => $date,
+            'usuarios' => Auth::user()->name,
+            ]);
+       
+        return view('plantilla');
+    }
+    Session::flash('menssage-error',"Los datos son Incorectos");
+    return view('usuarios.login');
     }
 }

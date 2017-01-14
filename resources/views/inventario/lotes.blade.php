@@ -43,7 +43,7 @@ h2,h1,span
 
 
                         
-                    <section class="section table-responsive">
+                    <section>
 
 
                             
@@ -62,7 +62,7 @@ h2,h1,span
                                             <table class="table table-bordered table-hover" style="width:100%" >
                                                 <thead align="center">
                                                     <tr>
-                                                    <th> </th>
+                                                    
                                                         <th>Codigo</th>
                                                         <th>Nombre</th>
                                                         <th>Marca</th>
@@ -102,7 +102,7 @@ h2,h1,span
                                                         
                                                         
                                                         <td>{{ $pro->desc }}</td>
-                                                        <td></td>
+                                                       
                                                     </tr>
                                                     @endforeach
                                                     

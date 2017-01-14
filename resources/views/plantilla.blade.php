@@ -277,88 +277,84 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Inicio</a>
+                            <a href="/login"><i class="fa fa-dashboard fa-fw"></i>Inicio</a>
                         </li>
+
+                         <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Proveedor<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/prove/create">Ingreso de Proveedor</a>
+                                </li>
+                                <li>
+                                    <a href="/prove">Ver  de los Proveedores</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/producto/create">Ingreso</a>
+                                    <a href="/producto/create">Ingreso de Producto</a>
                                 </li>
                                 <li>
                                     <a href="/producto">Ver los Productos</a>
                                 </li>
+                                <li>
+                                    <a href="/lotes">Ver los Productos Disponibles</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="/producto"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                         <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Compra<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="/compra/create">Ingreso de Compra</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
+                                    <a href="/compra">Ver el Detalla de Compra</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Clientes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Second Level Item</a>
+                                    <a href="/clientes/create">Ingreso de Clientes</a>
                                 </li>
                                 <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
+                                    <a href="/clientes">Ver los Clientes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                      <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Ventas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Blank Page</a>
+                                    <a href="/ventas/create">Realizar Ventas</a>
                                 </li>
                                 <li>
-                                    <a href="login.html">Login Page</a>
+                                    <a href="/ventas">ventas</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                          <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/usuarios/create">Ingreso de Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="/usuarios">Ver los Usuarios</a>
+                                </li>
+                                 <li>
+                                    <a href="/bitacoras">Ver la Bitacora</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

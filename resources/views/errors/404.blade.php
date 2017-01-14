@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-            <h1>Error 503</h1>
+            <h1>Error 404</h1>
                 <div class="title">Be right back.</div>
             </div>
         </div>

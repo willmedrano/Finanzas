@@ -343,16 +343,16 @@ jQuery(function($) {
 <!--fin de modal -->
     
 
-        Tabla Empleados
+        Tabla Clientes
     </h1>
 
 
-                        <p class="title-description"> Empleados  </p>
+                        <p class="title-description"> Clientes  </p>
                     </div>
 
 
                         
-                    <section class="section table-responsive">
+                    <section>
 
 
                             
@@ -371,7 +371,7 @@ jQuery(function($) {
                                             <table class="table table-bordered table-hover" style="width:100%" >
                                                 <thead align="center">
                                                     <tr>
-                                                        <th></th>
+                                                        
                                                         <th>Fotos</th>
                                                         <th>codigo</th>
 

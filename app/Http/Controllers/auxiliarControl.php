@@ -14,7 +14,7 @@ class auxiliarControl extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
+   
     public function index()
     {
         //
