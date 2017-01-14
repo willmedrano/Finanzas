@@ -24,11 +24,14 @@ class ControladorUsuarios extends Controller
         $this->middleware('auth', ['only' => 'admin']);
     }
      
+ 
 
     public function index(Request $request)
     {
-       $users=\App\User::all();
-        
+       $users=\App\User::paginate(2);
+        if($request->ajax()){
+            return response()->json(view('usuarios.users',compact('users'))->render());
+        }
         
         return view('usuarios.index', compact('users'));
     }

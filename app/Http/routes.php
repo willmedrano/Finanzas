@@ -40,11 +40,9 @@ Route::match(['get','post'],'/VerificarEPCaja/{codigopro}','ventas@VerificarEPCa
 Route::match(['get','post'],'/VerificarEPUnidades/{codigopro}','ventas@VerificarEPUnidades');
 Route::match(['get','post'],'/llenadoProducto2/{codigopro}','ventas@llenadoProducto2');
 
-Route::resource('bitacoras',"controladorBitacora");
 
-Route::resource('usuarios',"ControladorUsuarios");
-//rutas accessibles slo si el usuario no se ha logueado
-Route::get('sesion',"ControladorUsuarios@getSesion");
+
+
 Route::get('error', function(){ 
     abort(404);
 });
@@ -54,6 +52,13 @@ Route::get('500', function(){
 Route::get('503', function(){ 
     abort(503);
 });
+Route::resource('bitacoras',"controladorBitacora");
+
+Route::resource('usuarios',"ControladorUsuarios");
+//rutas accessibles slo si el usuario no se ha logueado
+Route::get('sesion',"ControladorUsuarios@getSesion");
+
+
 Route::group(['middleware' => 'guest'], function () {
 
 	Route::get('login', 'Auth\AuthController@getLogin');
