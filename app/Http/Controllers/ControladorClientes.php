@@ -77,6 +77,7 @@ class ControladorClientes extends Controller
             'nomEmp'=>$request['nombreE'],
             'apeEmp'=>$request['apeEmp'],
             'NacEmp'=>$request['Fnac'],
+            'ing'=>$request['ing'],
             'DUIEmp'=>$request['dui'],
             'NITEmp'=>$request['nit'],
             'dirEmp'=>$request['dir'],

@@ -18,6 +18,7 @@ class CreateClientesTable extends Migration
              $table->string('nomEmp');
              $table->string('apeEmp');
              $table->date('NacEmp');
+             $table->Double('ing');             
              $table->string('DUIEmp')->unique();
              $table->string('NITEmp')->unique();
              $table->string('dirEmp');

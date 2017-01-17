@@ -101,10 +101,10 @@ class ventas extends Controller
              
             'fechaf' => $request['fecha'],
             'total' => $request['total'],
-            'nomcli' => $request['cli'],
-            'iva_credito' => $request['iva'],
+            'idcliente' => $request['codC'],
+            'numfact' => $request['codC'],
             'detalle' => $request['des'],
-            'idempl' => $request['codE'],
+            //'idempl' => $request['codE'],
         ]);
         $ids;
         $gAux =\App\facturacion::All();

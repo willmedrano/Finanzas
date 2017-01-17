@@ -134,6 +134,9 @@ jQuery(function($) {
 
                                                     <input id="fcontrato" required name="fcontrato" type="hidden" value="<?php echo dameFecha(date("Y-m-d"),0);?>">
                                                  </div>
+                                                 <div class="col-xs-4" align="left">
+                                                    <input name="ing" id="ing"  type="text" placeholder="Ingreso Mensual" class="form-control" required>
+                                                </div>
 
                                             </div>
                                             <br>  

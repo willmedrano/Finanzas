@@ -117,11 +117,11 @@ h2,h1,span
                                                     <div class="form-group">
                             
                                                         <span class="col-md-2  text-center">
-                                                        <label >Nombre Cliente: </label></span>
+                                                        <label >Prima: </label></span>
                             
                                                         <div class="col-md-5">
 
-                                                            <input id="" name="" type="text" placeholder="Nombre del cliente" class="form-control">  
+                                                            <input id="prima" name="prima" type="text" placeholder="Adelanto" class="form-control">  
                                                         
                                                         </div>
 
@@ -176,7 +176,9 @@ h2,h1,span
 
                                                             <input id="total" name="total" type="text" placeholder="Total a pagar" class="form-control" value="<?php echo $total;
                                                             ?>">
-                                                        
+                                                            <input type="hidden" name="cx" id="cx" value="<?php echo $total;
+                                                            ?>">
+                                                            
                                                         </div>
 
                                                     </div>
@@ -844,16 +846,41 @@ document.getElementById('codC').addEventListener('input', function()//aqui se ej
             $.get(ruta2, function(res){
             $(res).each(function(key,value){
 
-            $("#clien").val(value.nomEmp);
 
+            $("#clien").val(value.nomEmp);
+            //$("#clien").val("cliente sin mensualidad")
             }); 
         }); 
 
 
 }
 });
-     
-//});
+document.getElementById('prima').addEventListener('input', function()//aqui se ejecuta cuando el usuario digita le muestra la cantidad.. de producto disponible..
+ {
+    //var c=event.target;
+    c=$("#prima").val();
+    y=$("#cx").val();
+    if(isNaN(c))
+    {
+        $("#total").val(y);
+    }
+    else 
+        {
+            if(c<=0 || y<c)
+            {
+        
+                $("#total").val(y);
+    
+            }
+            else{
+                x=$("#total").val();
+            
+                    
+                    $("#total").val(x-c);
+                }
+            
+        }
+});
 
 
 
