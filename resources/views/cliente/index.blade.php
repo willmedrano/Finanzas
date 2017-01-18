@@ -395,7 +395,7 @@ jQuery(function($) {
                                                   ?>
 
                                                     <tr>
-                                                         <td></td>
+                                                         
                                                          <td>
                                                          <img src="../imagenes/{{ $emple->fotoEmp }}" alt="Foto" style="width:60px;height:60px;">
                                                 </td>

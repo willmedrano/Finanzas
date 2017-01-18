@@ -36,17 +36,13 @@ h2,h1,span
                 <article class="content static-tables-page">
 
 
-<!--Inicio de modal -->
-               
-<!--fin de modal -->
-                
 
  <div class="title-block">
                     <span class="col-md-1  text-center">
                         <i class="fa fa-shopping-cart  bigicon"></i>
                      </span>
-                        <h1 class="title">Compras</h1>
-                        <p class="title-description">Tabla de Compras </p> 
+                        <h1 class="title">Detalle de Ventas</h1>
+                        <p class="title-description">Tabla Detalles de Venta </p> 
                          
                            
                     </div>
@@ -78,39 +74,44 @@ h2,h1,span
                                              <table class="table table-bordered table-hover" style="width:100%" >
                                                 <thead align="center">
                                                     <tr>
-                                                        <th>compra</th>
-                                                        <th>Tipo de Pago </th>
+                                                        <th>Detalle</th>
+                                                        <th>Producto </th>
                                                         
-                                                        <th>Fecha de Compra</th>
+                                                        <th>Cantidad Vendida</th>
+                                                        <th>Precio de Ventas</th>
+                                                        <th>sub-total</th>
                                                         
-                                                        
-                                                        
-                                                        <th>Total</th>
-                                                        <th>Accion</th>
                                                          
                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody class="buscar">
 
-                                                
+                                                <?php $total=0 ?>
                                                     @foreach($comp as $comps)
                                                     <tr class="v">
                                                         
                                                         <th  scope="row" >#{{ $comps->id }}</th>
-                                                        <td>{{ $comps->tipopago  }}</td>
-                                                        
-                                                        
-                                                        <?php $date = new DateTime($comps->fechacompra); ?>
-                                                        <td><?php  echo $date->format('d/m/Y'); ?></td>
-                                                        
-                                                        <td> $ {{ $comps->montocompra}}</td>
-                                                        <td>
-                                    {!!Form::open(['route'=>['compra.show',$comps->id],'method'=>'GET'])!!}
-                                                        <input type="submit" name="" value="Detalle"   class="btn btn-info btn-sm active " >
-                                                        {!!Form::close()!!}   
+                                                        <td>{{ $comps->nomProd}} </td>
+                                                      <td>{{ $comps->cantidadv  }}
 
-                                                        </td>
+                                                      </td>
+                                                      <td>$ {{ $comps->preciov}}</td>
+                                                          <td> $
+
+                                                          <?php
+                                                            $a=($comps->cantidadv*$comps->preciov);
+                                                            $total=$total+$a;
+                                                            echo round($a, 2);
+                                                            ?></td>
+
+                                                        
+                                                        
+                                                        
+                                                       
+                                                        
+                                                       
+                                                        
                                                                                                                 
                                                        
                                                     </tr>
@@ -122,7 +123,17 @@ h2,h1,span
                                                     
                                                       @endforeach
                                                 </tbody>
+                                                <tfoot>
+                                                    
+                                                    <tr align="center">
+                                                       
+                                                        <td colspan="4"><p style="font-weight: bold;">Total</p></td>
+                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total)?></p></td>
+                                                       
 
+                                                    </tr>
+                                                
+                                                </tfoot>
                                             </table>
                                         </section>
                                     </div>

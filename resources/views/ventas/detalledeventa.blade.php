@@ -36,17 +36,14 @@ h2,h1,span
                 <article class="content static-tables-page">
 
 
-<!--Inicio de modal -->
-               
-<!--fin de modal -->
-                
+
 
  <div class="title-block">
                     <span class="col-md-1  text-center">
                         <i class="fa fa-shopping-cart  bigicon"></i>
                      </span>
-                        <h1 class="title">Compras</h1>
-                        <p class="title-description">Tabla de Compras </p> 
+                        <h1 class="title">Facturas</h1>
+                        <p class="title-description">Tabla Facturas </p> 
                          
                            
                     </div>
@@ -79,13 +76,14 @@ h2,h1,span
                                                 <thead align="center">
                                                     <tr>
                                                         <th>compra</th>
-                                                        <th>Tipo de Pago </th>
-                                                        
-                                                        <th>Fecha de Compra</th>
                                                         
                                                         
+                                                        <th>Cliente</th>
                                                         
+                                                        
+                                                        <th>Fecha</th>
                                                         <th>Total</th>
+                                                        <th>Descripción</th>
                                                         <th>Accion</th>
                                                          
                                                        
@@ -98,15 +96,21 @@ h2,h1,span
                                                     <tr class="v">
                                                         
                                                         <th  scope="row" >#{{ $comps->id }}</th>
-                                                        <td>{{ $comps->tipopago  }}</td>
+                                                        <td>{{ $comps->nomEmp}}
+
+                                                     
+
                                                         
                                                         
-                                                        <?php $date = new DateTime($comps->fechacompra); ?>
+                                                        
+                                                        <?php $date = new DateTime($comps->fechaf); ?>
                                                         <td><?php  echo $date->format('d/m/Y'); ?></td>
                                                         
-                                                        <td> $ {{ $comps->montocompra}}</td>
+                                                        <td> $ {{ $comps->total}}</td>
+                                                        <td> {{ $comps->detalle}}</td>
+                                                        
                                                         <td>
-                                    {!!Form::open(['route'=>['compra.show',$comps->id],'method'=>'GET'])!!}
+                                    {!!Form::open(['route'=>['ventas.show',$comps->id],'method'=>'GET'])!!}
                                                         <input type="submit" name="" value="Detalle"   class="btn btn-info btn-sm active " >
                                                         {!!Form::close()!!}   
 

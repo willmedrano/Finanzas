@@ -20,8 +20,8 @@ class ventas extends Controller
     }
     public function index()
     {
-        return view('ventas.facturar');
-        
+        $comp= \App\facturacion::emp();
+        return view('ventas.detalledeventa',compact('comp')); 
     }
     public function llenadoProducto2($codigopro)//retorno el nombre del producto y el proveedor.
     {
@@ -166,6 +166,8 @@ class ventas extends Controller
     public function show($id)
     {
         //
+        $comp=\App\ventasp::pro2($id);
+        return view('ventas.detalle',compact('comp'));
     }
 
     /**

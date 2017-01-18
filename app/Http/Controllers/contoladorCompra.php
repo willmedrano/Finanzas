@@ -25,10 +25,13 @@ class contoladorCompra extends Controller
     }
     public function index()
     {
-        $comp=compras::Mostrarcompras();
-        $prov =\App\proveedor::All();
-         $comptotal=compras::all();
-        return view('compra.detalledecompra',compact('comp','prov','comptotal')); 
+        //$comp=compras::Mostrarcompras();
+        //$prov =\App\proveedor::All();
+         //$comptotal=compras::all();
+        $comp=compras::All();
+        
+         //$comptotal=compras::all();
+        return view('compra.detalledecompra',compact('comp'));  
      // return view('compra.modificarcompra',compact('comp')); 
      // $aux =\App\auxiliar::auxComp();
        // return view('layouts.inicio');
@@ -169,8 +172,8 @@ SELECT id, fechcouta, estadcuota, morac, ncuotas, cuotas, idcompsc,
     public function show($id)
     {
         
-         $pro2 =\App\producto::mostrar($id);
-        return view('compra.createcompra',compact('pro2'));
+           $comp=\App\detalle_compra::pro2($id);
+        return view('compra.detalle',compact('comp'));
 
     }
 

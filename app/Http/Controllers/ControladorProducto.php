@@ -20,7 +20,8 @@ class ControladorProducto extends Controller
     }
     public function index()
     {
-       return view('Productos.index');
+        $bita=\App\Bitacora::all();
+        return view('bitacoras.bitacorasv', compact('bita'));
     }
 
     /**

@@ -70,7 +70,7 @@ h2,h1,span
         <div class="container-fluid bd-example-row">
           
               <label for="">El producto esta desactivo</label>
-              <input type="hidden" name="hi"">
+              <input type="hidden" name="hi">
               <input type="hidden" name="hi2" value="2">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -162,7 +162,7 @@ h2,h1,span
                       </div>
                       <span class="col-md-1  text-center"><i class="fa fa-dollar bigicon"></i></span>
                       <div class="col-xs-3">
-                      <input id="preciocomp" name="preciocomp" type="text" placeholder="Precio de compra unitario" class="form-control" onkeyup="sumar();">
+                      <input id="preciocomp" name="preciocomp" type="text" placeholder="Precio de compra unitario" class="form-control"  required onkeyup="sumar();">
                       </div>
                       
                       </div>
@@ -288,8 +288,8 @@ h2,h1,span
                                                     
                                                  
                                                     <select class="form-control" name="formap" id="formap" onclick ="seleccionTipopago();">
-                                                        <option value="Credito" selected="true">Credito</option>
-                                                        <option value="Contado">Contado</option>   
+                                                        <option value="Contado" selected="true">Contado</option>
+                                                           
                                                     </select>
                                             
                                                 </div>
@@ -325,20 +325,18 @@ h2,h1,span
                                             <br>
                                             <div class="form-group">
 
-                                            <span class="col-md-1 col-md-offset-2 text-center"><i class="bigicon" style=" font-weight: bold;">#</i></span>
+                                           
                                                   <div class="col-xs-3">
                                                  
-                                             <input id="cuotas" name="cuotas" type="text" placeholder="Numero de cuotas" class="form-control" onkeyup="cuotasapagar();">
+                                             <input id="cuotas" name="cuotas" type="hidden" placeholder="Numero de cuotas" class="form-control" onkeyup="cuotasapagar();">
                                                <input required type="hidden" name="ncuotas" id="ncuotas" value="1">
                                                </div>
 
-                                            <span class="col-md-1  text-center">
-                                                    <i> moto por cuota:</i>
-                                                </span>
+                                            
                                                 <div class="col-xs-3">
                                                     
                                                   
-                                                  <input id="montocouta" name="montocouta" type="text" placeholder="cuotas monto" class="form-control" disabled = 'true' value="<?php echo $p;?>">
+                                                  <input id="montocouta" name="montocouta" type="hidden" placeholder="cuotas monto" class="form-control" disabled = 'true' value="<?php echo $p;?>">
                                                    <input type="hidden" name="ppcuotas" id="ppcuotas" >
                                             
                                                  

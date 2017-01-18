@@ -103,11 +103,11 @@ h2,h1,span
 
                                                     <div class="form-group">
                                                         
-                                                        <span class="col-md-2  text-center" ><label >Nombre vendedor: </label></span>
+                                                        <span class="col-md-2  text-center" ><label >Nombre del Cliente: </label></span>
                                                         
                                                         <div class="col-md-6">
                                                            
-                                                                <input id="clien" name="clien" type="text" placeholder="Nombre del Cliente" class="form-control" value="">
+                                                                <input id="clien" name="clien" type="text" placeholder="Nombre del Cliente" class="form-control" value="" readonly="readonly" required>
                                 
                                                         
                                                             

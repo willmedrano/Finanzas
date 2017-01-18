@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class detalle_compra extends Model
@@ -17,4 +17,16 @@ class detalle_compra extends Model
     //idprods;   es para saber la informacion de ese producto que sea adquirido
     //idcomps;   es para saber que compra que de que se adquirido.
     protected $fillable = ['preciocomp', 'descompra', 'cancompra', 'idprods', 'idcomps'];//Aqui creamos los campos de la tabla 
+
+ public static function pro2($id){
+       return DB::table('productos')
+       ->join('detalle_compras', 'detalle_compras.idprods', '=', 'productos.id')
+       ->where('detalle_compras.idcomps', '=', $id )
+            //->where('detalle_compras.idcomps','=',$id);
+       		//->join('compras', 'compras.id', '=', )
+            
+            ->select('detalle_compras.*','productos.nomProd')
+            //->orderBy('productos.id')
+            ->get();
+   }
 }

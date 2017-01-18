@@ -18,10 +18,7 @@ class controladorBitacora extends Controller
     {
         $this->middleware('auth');
     }
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  
     public function index()
     {
         $bita=\App\Bitacora::all();
@@ -35,7 +32,7 @@ class controladorBitacora extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

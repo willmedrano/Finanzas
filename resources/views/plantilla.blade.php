@@ -297,10 +297,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/producto/create">Ingreso de Producto</a>
+                                    <a href="/inve/create">Ingreso de Producto</a>
                                 </li>
                                 <li>
-                                    <a href="/producto">Ver los Productos</a>
+                                    <a href="/inve">Ver los Productos</a>
                                 </li>
                                 <li>
                                     <a href="/lotes">Ver los Productos Disponibles</a>
