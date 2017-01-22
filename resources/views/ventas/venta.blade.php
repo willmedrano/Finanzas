@@ -79,7 +79,7 @@ h2,h1,span
                                         
                                         </div>
                                         
-                                        <div class="modal-body">
+                                        <div class="modal-body" id="modal-body">
                                             
                                             <div class="container-fluid bd-example-row">
                                             
@@ -93,7 +93,7 @@ h2,h1,span
                                                         
                                                         <div class="col-md-6">
                                                             
-                                                            <input id="codC" name="codC" type="text" placeholder="Correlativo de la factura" class="form-control" value="
+                                                            <input id="codC" name="codC" type="text" placeholder="Codigo del Cliente" class="form-control" value="
 ">
                                 
                                                         </div>
@@ -103,7 +103,7 @@ h2,h1,span
 
                                                     <div class="form-group">
                                                         
-                                                        <span class="col-md-2  text-center" ><label >Nombre del Cliente: </label></span>
+                                                        <span class="col-md-2  text-center" ><label >Cliente: </label></span>
                                                         
                                                         <div class="col-md-6">
                                                            
@@ -121,11 +121,29 @@ h2,h1,span
                             
                                                         <div class="col-md-5">
 
-                                                            <input id="prima" name="prima" type="text" placeholder="Adelanto" class="form-control">  
+                                                            <input id="prima" name="prima" type="text" placeholder="Adelanto" class="form-control" value="0">  
                                                         
                                                         </div>
 
                                                     </div>
+                                                    <div class="form-group">
+                            
+                                                        <span class="col-md-2  text-center">
+                                                        <label ># Cuotas: </label></span>
+                            
+                                                        <div class="col-md-5">
+
+                                                            
+                                                            <select class=" form-control" name="formap" id="formap" onclick ="seleccionTipopago();">         
+                                                             <option  value="6">6</option>
+                                                             <option  value="12" >12</option>
+                                                             <option  value="18" >18</option>
+                                                               </select>  
+                                                        
+                                                        </div>
+
+                                                    </div>
+
                                                     
                                                     <div class="form-group">
                             
@@ -182,6 +200,17 @@ h2,h1,span
                                                         </div>
 
                                                     </div>
+                                                      <div class="form-group">
+                            
+                                                        <span class="col-md-2  text-center"><label >Por Cuota: </label></span>
+                                                        
+                                                        <div class="col-xs-5">
+                                
+                                                            <input id="cuotas" name="cuotas" type="text" placeholder="Total a pagar por cuota" class="form-control" value="<?php echo round((($total/6)+(($total/6)*0.1)),2)?>">
+                                                        </div>
+
+                                                    </div>
+
 
                                                     <div class="form-group">
                                                         
@@ -281,6 +310,8 @@ h2,h1,span
                                                         </div>
 
                                                     </div>
+
+                                                  
                                                     
                                                     <div class="form-group">
                             
@@ -855,32 +886,92 @@ document.getElementById('codC').addEventListener('input', function()//aqui se ej
 
 }
 });
-document.getElementById('prima').addEventListener('input', function()//aqui se ejecuta cuando el usuario digita le muestra la cantidad.. de producto disponible..
- {
+
+
+$('#modal-body').on('change','#prima',function (){
+//document.getElementById('prima').addEventListener('input', function()//aqui se ejecuta cuando el usuario digita le muestra la cantidad.. de producto disponible..
+ 
     //var c=event.target;
-    c=$("#prima").val();
-    y=$("#cx").val();
-    if(isNaN(c))
+    c=parseFloat($("#prima").val());
+
+    y=parseFloat($("#cx").val());
+    w=$("#prima").val();
+    $("#total").val(y);
+    if(isNaN(w))
     {
+
+        $("#prima").val(0);
         $("#total").val(y);
+        $("#prima").val(0);
+
+        var posicion=document.getElementById('formap').options.selectedIndex; //posicion
+          var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+            $("#cuotas").val(x.toFixed(2));
+
     }
     else 
         {
-            if(c<=0 || y<c)
+            if(c<=0)
             {
-        
+
+                
                 $("#total").val(y);
+                $("#prima").val(0);
+                var posicion=document.getElementById('formap').options.selectedIndex; //posicion
+          var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+            $("#cuotas").val(x.toFixed(2));
+
+               
     
             }
-            else{
+            else if(y<c){
+                $("#total").val(y);
+                 $("#prima").val(0);
+                var posicion=document.getElementById('formap').options.selectedIndex; //posicion
+          var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+            $("#cuotas").val(x.toFixed(2));
+
+            }
+            else if(y>=c){
+              //  $("#prima").val(0);
                 x=$("#total").val();
             
-                    
-                    $("#total").val(x-c);
+                    x=(y-c);
+                    //x=round(x,2);
+                    $("#total").val(x.toFixed(2));
+                     var posicion=document.getElementById('formap').options.selectedIndex; //posicion
+          var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+            $("#cuotas").val(x.toFixed(2));
+
+                     
+    
+                }else{
+                     y=$("#cx").val();
+                    $("#total").val(y);
+                    $("#prima").val(0);
+                   var posicion=document.getElementById('formap').options.selectedIndex; //posicion
+          var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+            $("#cuotas").val(x.toFixed(2));
+
+
                 }
             
         }
 });
+
+
+function seleccionTipopago() {
+           
+          var posicion=document.getElementById('formap').options.selectedIndex; //posicion
+          var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+            $("#cuotas").val(x.toFixed(2));                                            
+        }
 
 
 

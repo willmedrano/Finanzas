@@ -34,11 +34,11 @@ h2,h1,span
                         <h1 class="title">
     
 
-        Tabla Kardex
+        Kardex Producto: {{ $pro->nomProd }}
     </h1>
 
 
-                        <p class="title-description"> Kardex  </p>
+                        <p class="title-description"> Entradas, Salidas y Exitencias  </p>
                     </div>
 
 
@@ -47,7 +47,7 @@ h2,h1,span
 
 
                             
-                                <button type="submit"  class="btn btn-primary btn-lg">Imprimir</button>
+                                <a href="javascript:window.print();" class="btn btn-primary btn-lg">Reporte</a>
                             
                             
                         <div class="row table-responsive">
@@ -150,7 +150,7 @@ h2,h1,span
                                                         <td></td>
                                                           <td>  </td>
 
-                                                            <th><?php echo $comp2[$cont]->cantidadv?></th>
+                                                            <th><?php echo $comp2[$cont]->cantidadv;?></th>
                                                         
                                                         <th><?php echo round($vu,2);?></th>
                                                          <th>$<?php echo round($a, 2);?></th>

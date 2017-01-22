@@ -95,7 +95,9 @@ class ventas extends Controller
     public function store(Request $request)
     {
         //
-
+                //$v="+"+1+" month";
+         $dt=$request['fecha'];
+                $dt =date("Y/m/d", strtotime("$dt +1 month"));
 
         \App\facturacion::create([
              
@@ -128,7 +130,38 @@ class ventas extends Controller
                         
             
     }
-       
+    $estado=$request['cuotas'];
+                if($estado==0)
+                {
+                    \App\pago::create([
+                //'' => $valor->preciocomp3,
+                'fecha' => $request['fecha'],
+                'pendiente' => 0,
+                'monto' => 0,
+                'mora' => 0,
+                'cuotas' =>0,
+                'idFact' => $ids,
+                'idCli' => $request['codC'],
+                'estado'=> false,
+                
+
+            ]);
+            }
+            else{
+                
+                    \App\pago::create([
+                //'' => $valor->preciocomp3,
+                'fecha' => $dt,
+                'pendiente' => $request['total'],
+                'monto' => $request['cuotas'],
+                'mora' => 0,
+                'cuotas' =>$request['formap'],
+                'idFact' => $ids,
+                'idCli' => $request['codC'],
+
+            ]);
+
+            }
         
         
 
