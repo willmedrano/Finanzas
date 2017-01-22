@@ -78,8 +78,8 @@ h2,h1,span
                                                         <th>Producto </th>
                                                         
                                                         <th>Cantidad Vendida</th>
-                                                        <th>Precio de Ventas</th>
                                                         <th>sub-total</th>
+                                                        
                                                         
                                                          
                                                        
@@ -97,38 +97,25 @@ h2,h1,span
 
                                                       </td>
                                                       <td>$ {{ $comps->preciov}}</td>
-                                                          <td> $
-
+                                                          
+                                                      
                                                           <?php
-                                                            $a=($comps->cantidadv*$comps->preciov);
+                                                            $a=($comps->preciov);
                                                             $total=$total+$a;
-                                                            echo round($a, 2);
-                                                            ?></td>
-
-                                                        
-                                                        
-                                                        
-                                                       
-                                                        
-                                                       
-                                                        
-                                                                                                                
-                                                       
+                                                            ?>
+                                                            
+                    
+                
                                                     </tr>
-                                                    
-                                                  
-                                                    
-                                                    
-
-                                                    
+               
                                                       @endforeach
                                                 </tbody>
                                                 <tfoot>
                                                     
                                                     <tr align="center">
                                                        
-                                                        <td colspan="4"><p style="font-weight: bold;">Total</p></td>
-                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total)?></p></td>
+                                                        <td colspan="3"><p style="font-weight: bold;">Total</p></td>
+                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total,2)?></p></td>
                                                        
 
                                                     </tr>

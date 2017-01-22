@@ -58,7 +58,7 @@ h2,h1,span
                                             <h3 class="title">
                             
                         </h3> </div>
-                                        <section class="example">
+                                        
                                             <table class="table table-bordered table-hover" style="width:100%" >
                                                 <thead align="center">
                                                     <tr>
@@ -72,7 +72,7 @@ h2,h1,span
                                                         <th>Unidades Disponibles</th>
                                                         <th>Precio de venta</th>
                                                         <th>Descripcion</th>
-                                                        
+                                                         <th>Acción</th>
                                                        
                                                     </tr>
                                                 </thead>
@@ -81,7 +81,7 @@ h2,h1,span
                                                     
                                                     @foreach($lotes as $pro)
                                                     <tr>
-                                                    <th></th>
+                                                    
                                                         <th scope="row" >{{ $pro->cod }}</th>
                                                         <td>{{ $pro->nomProd }}</td>
                                                         <td>{{ $pro->marca }}</td>
@@ -102,6 +102,13 @@ h2,h1,span
                                                         
                                                         
                                                         <td>{{ $pro->desc }}</td>
+                                                        <td>
+                                                    {!!Form::open(['route'=>['lotes.show',$pro->id],'method'=>'GET'])!!}
+                                                        <input type="submit" name="" value="KARDEX"   class="btn btn-info btn-sm active " >
+                                                        {!!Form::close()!!}   
+
+                                                        </td>
+                                                  
                                                        
                                                     </tr>
                                                     @endforeach
@@ -111,7 +118,7 @@ h2,h1,span
                                                       
                                                 </tbody>
                                             </table>
-                                        </section>
+                                    
                                     </div>
                                 
                             </div>

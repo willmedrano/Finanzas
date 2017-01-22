@@ -29,4 +29,15 @@ class detalle_compra extends Model
             //->orderBy('productos.id')
             ->get();
    }
+
+    public static function pro3($id){
+       return DB::table('compras')
+            ->join('detalle_compras', 'detalle_compras.idcomps', '=', 'compras.id')
+            ->where('detalle_compras.idprods', '=', $id)
+            
+            ->select('compras.*',  'detalle_compras.*','compras.id')
+            ->orderBy('compras.id')
+            ->get();
+   }
+
 }

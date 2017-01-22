@@ -18,8 +18,23 @@ class ventasp extends Model
             //->where('detalle_compras.idcomps','=',$id);
           //->join('compras', 'compras.id', '=', )
             
-            ->select('ventasps.*','productos.nomProd')
+            ->select('ventasps.*','productos.nomProd','productos.cPromedio','productos.gUni')
             //->orderBy('productos.id')
             ->get();
    } 
+
+
+
+    public static function pro3($id){
+       return DB::table('facturacions')
+            ->join('ventasps', 'ventasps.idFact', '=', 'facturacions.id')
+            ->where('ventasps.idProd', '=', $id)
+            
+            ->select('facturacions.*',  'ventasps.*','facturacions.id')
+            ->orderBy('facturacions.id')
+            ->get();
+   }
+
+   
+
 }

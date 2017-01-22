@@ -217,7 +217,7 @@ h2,h1,span
 
 
                         
-                    <section class="section table-responsive">
+                    <section>
 
 
                             
@@ -242,7 +242,7 @@ h2,h1,span
                                             <table class="table table-bordered table-hover" style="width:100%" >
                                                 <thead align="center">
                                                     <tr>
-                                                    <th> </th>
+                                                    
                                                         <th>   Codigo</th>
                                                         <th>Nombre</th>
                                                         <th>Marca</th>
@@ -258,7 +258,7 @@ h2,h1,span
                                                         <th>Descripcion</th>
                                                         <th colspan="1" rowspan="">Accion</th>
                                                         <th colspan="1" rowspan="">Estado</th>
-                                                        <th></th>
+                                                        
                                                        
                                                     </tr>
                                                 </thead>
@@ -267,7 +267,7 @@ h2,h1,span
                                                 
 
                                                     <tr>
-                                                    <td> </td> 
+                                                     
                                                         <td>{{ $pro->cod }}</td>
                                                         <td>{{ $pro->nomProd }}</td>
                                                         <td>{{ $pro->marca }}</td>
@@ -304,7 +304,7 @@ h2,h1,span
                                                         @if($pro->estado==false)
                                                             <td><button type="submit"  class="btn btn-sm gris" data-toggle="modal" data-target="#gridSystemModal3{{$pro->id}}">Desactivo</button></td>
                                                         @endif
-                                                        <td></td>
+                                                        
 
                                                        
                                                     </tr>

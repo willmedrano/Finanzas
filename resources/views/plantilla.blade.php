@@ -339,7 +339,10 @@
                                     <a href="/ventas/create">Realizar Ventas</a>
                                 </li>
                                 <li>
-                                    <a href="/ventas">ventas</a>
+                                    <a href="/ventas">Facturas</a>
+                                </li>
+                                <li>
+                                    <a href="/lotes/create">Productos mas Vendidos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
