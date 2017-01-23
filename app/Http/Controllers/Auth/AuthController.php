@@ -67,7 +67,7 @@ class AuthController extends Controller
             'usuarios' => Auth::user()->name,
             ]);
        
-        return view('plantilla');
+        return view('inicio');
     }
     Session::flash('menssage-error',"Los datos son Incorectos");
     return view('usuarios.login');
