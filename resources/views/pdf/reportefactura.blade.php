@@ -70,7 +70,7 @@ h2,h1,span
 p.serif {
     font-family: "Times New Roman", Times, serif;
      font-size: 9px;
-     text-align: center;
+     text-align: left;
 }
 p.serif1 {
     font-family: "Times New Roman", Times, serif;
@@ -129,8 +129,8 @@ td.sansserif {
             
              <p class="colornf">N°</p>
              
-             <p class="serif">REGISTRO N° </p>
-              <p class="serif">NIT: </p>
+             <p class="serif">REGISTRO N°  <strong>{{ $detalle->registro}}</strong></p>
+              <p class="serif">NIT: <strong>{{ $detalle->NITEmp}}</strong></p>
              </td>
            
            </tr>
@@ -155,9 +155,9 @@ td.sansserif {
           
           <tr>
           <td>
-            <p class="serif1">Cliente:______________________________________</p>
+            <p class="serif1">Cliente: <strong>{{ $detalle->nomEmp}}</strong></p>
             
-             <p class="serif1">Dirección:____________________________________</p>
+             <p class="serif1">Dirección: <strong>{{ $detalle->dirEmp}}</strong></p>
              
              <p class="serif1">Departamento:_________________________________</p>
             <p></p>
@@ -171,19 +171,21 @@ td.sansserif {
            <table border="0" width="350px" align="right">
           <tr>
           <td>
-            <p class="serif1">Fecha:____________________________________</p>
+            <p class="serif1">Fecha: <strong><?=  $date; ?></strong></p>
             
-             <p class="serif1">N° de Registro:__________________________</p>
+             <p class="serif1">N° de Registro: <strong>{{ $detalle->registro}}</strong></p>
              
-             <p class="serif1">NIT:______________________________________</p>
+             <p class="serif1">NIT: <strong>{{ $detalle->NITEmp}}</strong></p>
              <p class="serif1">Giro:_____________________________________</p>
+             <p class="serif1">Condiciones de Pago:________________________</p>
+
              </td>
            
            </tr>
            </table>
             </article>
   </div><!-- /.box-header -->
-  <br><br><br><br><br><br>
+  <br><br><br><br><br><br><br>
   <div class="box-body">
     <table class="table" border="1" style="width:100%" >
       <thead>
@@ -198,7 +200,27 @@ td.sansserif {
       </thead>
   
       <tbody>
-     
+     <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+        </tr>
+        <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+        </tr>
+        <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+        </tr>
 
       </tbody>
       <tfoot>
@@ -209,19 +231,19 @@ td.sansserif {
            </tr>
            <tr>
              <td>
-            <p class="serif">NOMBRE:_______________</p>
+            <p class="serif">NOMBRE:_________________</p>
             
-             <p class="serif">DUI:__________________</p>
+             <p class="serif">DUI:____________________</p>
              
-             <p class="serif">FIRMA:________________</p>
+             <p class="serif">FIRMA:___________________</p>
               
              </td>
               <td>
-            <p class="serif">NOMBRE:_______________</p>
+            <p class="serif">NOMBRE:___________________</p>
             
-             <p class="serif">DUI:__________________</p>
+             <p class="serif">DUI:_____________________</p>
              
-             <p class="serif">FIRMA:________________</p>
+             <p class="serif">FIRMA:____________________</p>
               
              </td>
             <td colspan="3" rowspan="3">
@@ -237,7 +259,7 @@ td.sansserif {
             </td>
              </tr>
              <tr align="right">
-                  <td colspan="2" rowspan="1"><p class="serif">OBSERVACION:____________________________________________ </p></td>
+                  <td colspan="2" rowspan="1"><p class="serif">OBSERVACION:________________________________________________ </p></td>
                  
              </tr>
              <tr align="right">

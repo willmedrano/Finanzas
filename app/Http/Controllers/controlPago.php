@@ -99,7 +99,7 @@ class controlPago extends Controller
         {
             $cuota->estado=false;
             $cuota->save();
-            $cli =\App\cliente::find($cuota->);
+            //$cli =\App\cliente::find($cuota->);
             
         }
         else{

@@ -65,18 +65,18 @@ class PdfControlador extends Controller
     {
         
     }
-    public function facturaC_F(Request $request)
+    public function facturaC_F(Request $request,$id)
     {
         $fch1=$request->fechaInicial;
       $fch2=$request->fechaFinal;
       
 
-     // $detalle=\App\proveedor::All();
+      $detalle=\App\cliente::find($id);
       
       $date = date('d-m-Y');
       $date1 = date('g:i:s a');
       $vistaurl="pdf.reportefactura";
-      $view =  \View::make($vistaurl, compact('date','date1','fch1','fch2'))->render();
+      $view =  \View::make($vistaurl, compact('date','date1','fch1','fch2','detalle'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
 

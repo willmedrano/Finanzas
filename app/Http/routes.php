@@ -75,5 +75,6 @@ Route::get('inicio',"ControladorUsuarios@MostrarInicio");
 
 //Lo que le agregado jonathan
 Route::resource('reportes',"PdfControlador");
+Route::get('facturas/{id}',"PdfControlador@facturaC_F");
 Route::get('factura',"PdfControlador@facturaC_F");
 Route::get('facturacf',"PdfControlador@facturaC_C");

@@ -42,13 +42,13 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:#FFE4B5;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-bottom: 0">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" style="#FFE4B5">SISTEMA DE FINANZAS </a>
+                <a class="navbar-brand" href="#" style="font-size:25px;">SISTEMA DE FINANZAS </a>
             </div>
             <!-- /.navbar-header -->
 
@@ -73,16 +73,16 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation" style="background-color:#FFE4B5;">
-                <div class="sidebar-nav navbar-collapse" style="background-color:#FFE4B5;">
-                    <ul class="nav" id="side-menu" style="background-color:#FFE4B5;">
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
                        
                         <li>
-                            <a href="/login"><i class="fa fa-dashboard"  style="background-color:#FFE4B5;"></i>Inicio</a>
+                            <a href="/login"><i class="fa fa-dashboard" ></i>Inicio</a>
                         </li>
 
                          <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Proveedor<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-truck fa-fw"></i>Control de Proveedor<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/prove/create">Ingreso de Proveedor</a>
@@ -95,7 +95,7 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Productos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-th-large fa-fw"></i>Control de Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/inve/create">Ingreso de Producto</a>
@@ -110,7 +110,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                          <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Compra<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i>Control de Compra<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/compra/create">Ingreso de Compra</a>
@@ -122,7 +122,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Clientes<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Control de Clientes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/clientes/create">Ingreso de Clientes</a>
@@ -134,7 +134,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                       <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Control de Ventas<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-file-text-o fa-fw"></i>Control de Ventas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/ventas/create">Realizar Ventas</a>
@@ -144,6 +144,15 @@
                                 </li>
                                 <li>
                                     <a href="/lotes/create">Productos mas Vendidos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Control de Carteras<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/carteras/create">Cartera de Clientes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
