@@ -72,3 +72,8 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('/', 'ControladorUsuarios@admin');
 Route::get('inicio',"ControladorUsuarios@MostrarInicio");
 });
+
+//Lo que le agregado jonathan
+Route::resource('reportes',"PdfControlador");
+Route::get('factura',"PdfControlador@facturaC_F");
+Route::get('facturacf',"PdfControlador@facturaC_C");
