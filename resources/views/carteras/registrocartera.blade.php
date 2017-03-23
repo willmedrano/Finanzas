@@ -375,7 +375,7 @@ jQuery(function($) {
                                                         <th>NIT</th>
                                                         <th>F. Registro</th>
                                                         <th>Telefono</th>
-                                                        <th>Sexo</th>
+                                                        <th>Categoria</th>
                                                         <th colspan="1" align="center">Acción</th>
                                                         <th colspan="1" align="center">Ver</th>
                                                        
@@ -401,7 +401,13 @@ jQuery(function($) {
                                                         <td>{{ $emple->NITEmp }}</td>
                                                         <td><?php  echo $date->format('d/m/Y'); ?></td>
                                                         <td>{{ $emple->telEmp }}</td>
-                                                        <td>{{ $emple->sexEmp }}</td>
+                                                        <td><?php if($emple->categoria==1) $ca="nuevo";
+                                                                  if($emple->categoria==2) $ca="A";
+                                                                    if($emple->categoria==3) $ca="B";
+                                                                    if($emple->categoria==4) $ca="C";
+
+                                                                    echo $ca;
+                                                         ?></td>
                                                        
 
 
@@ -419,7 +425,7 @@ jQuery(function($) {
 
                                                          <td>
                                                         {!!Form::open(['route'=>['prove.show',$emple->id],'method'=>'GET'])!!}
-                                                        <input type="submit" name="" value="Histotial"   class="btn btn-info btn-sm active " >
+                                                        <input type="submit" name="" value="Historial"   class="btn btn-info btn-sm active " >
                                                         {!!Form::close()!!}   
 
                                                         </td>

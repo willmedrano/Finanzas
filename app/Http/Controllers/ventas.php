@@ -39,7 +39,7 @@ class ventas extends Controller
       public function VerificarEPCaja($codigopro)//verica la cantidad que se tiene en caja de los productos.
       {
 
-         $productor=\App\producto::where('id',$codigopro)->get();
+         $productor=\App\producto::where('cod',$codigopro)->get();
          $producto=\App\lotes::where('idprodsl',$productor[0]->id)->get();
     
  
@@ -59,7 +59,10 @@ class ventas extends Controller
             # code...
             if($pro2->id==$codigopro)
             {
-                $producto1=\App\cliente::find($codigopro);
+                $producto1r=\App\cliente::find($codigopro);
+                if($producto1r->categoria!=4)
+                {
+                    $producto1=\App\cliente::find($codigopro);
                 $producto1->ing=($producto1->ing-200);
 
                 $lotes = \App\pago::where('idCli',$codigopro)->get();
@@ -70,7 +73,7 @@ class ventas extends Controller
                         $producto1->ing=$producto1->ing-$lotes[$cont]->monto;
                     }
                 }
-
+}
          //$cli=\App\cliente::find($id);
             }
         }
@@ -145,38 +148,7 @@ class ventas extends Controller
                         
             
     }
-    $estado=$request['cuotas'];
-                if($estado==0)
-                {
-                    \App\pago::create([
-                //'' => $valor->preciocomp3,
-                'fecha' => $request['fecha'],
-                'pendiente' => 0,
-                'monto' => 0,
-                'mora' => 0,
-                'cuotas' =>0,
-                'idFact' => $ids,
-                'idCli' => $request['codC'],
-                'estado'=> false,
-                
 
-            ]);
-            }
-            else{
-                
-                    \App\pago::create([
-                //'' => $valor->preciocomp3,
-                'fecha' => $dt,
-                'pendiente' => $request['total'],
-                'monto' => $request['cuotas'],
-                'mora' => 0,
-                'cuotas' =>$request['formap'],
-                'idFact' => $ids,
-                'idCli' => $request['codC'],
-
-            ]);
-
-            }
         
         
 
@@ -201,6 +173,50 @@ class ventas extends Controller
                    }
                                  
         }
+        $estado=$request['cuotas'];
+                if($estado==0)
+                {
+                    \App\pago::create([
+                //'' => $valor->preciocomp3,
+                'fecha' => $request['fecha'],
+                'pendiente' => $request['total'],
+                'monto' => 0,
+                'mora' => 0,
+                'cuotas' =>0,
+                'idFact' => $ids,
+                'idCli' => $request['codC'],
+                'estado'=> false,
+
+
+                
+
+            ]);
+                    $c=$request['codC'];
+                    $cli=\App\cliente::find($c);
+                    if($cli->registro==0)
+                    {
+                        return redirect('facturacf')->with('cli');
+                    }
+                    else
+                    {
+                        return redirect('factura')->whith('cli');   
+                    }
+            }
+            else{
+                
+                    \App\pago::create([
+                //'' => $valor->preciocomp3,
+                'fecha' => $dt,
+                'pendiente' => $request['total'],
+                'monto' => $request['cuotas'],
+                'mora' => 0,
+                'cuotas' =>$request['formap'],
+                'idFact' => $ids,
+                'idCli' => $request['codC'],
+
+            ]);
+
+            }
 
         return redirect('ventas/create')->with('message','store');
     }
