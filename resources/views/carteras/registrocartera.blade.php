@@ -16,11 +16,6 @@
     font-size: 35px;
     color: #36A0FF;
 }
-thead{
-     background: #ffffcc;
-     border:1;
-
-}
 
 h2,h1,span
 {
@@ -342,36 +337,37 @@ jQuery(function($) {
 @endforeach
 <!--fin de modal -->
     
-
-        Tabla Empleados
+ <div class="title-block ">
+                        <h1 class="title">
+        Cartera De Clientes
     </h1>
 
 
-                        <p class="title-description"> Empleados  </p>
+                        <p class="title-description"> clientes  </p>
                     </div>
 
 
                         
-                    <section class="section table-responsive">
+                    <section class="">
 
 
                             
-                                <button type="submit"  class="btn btn-primary btn-lg">Imprimir</button>
+                               <a href="javascript:window.print();" class="btn btn-primary btn-lg">Reporte</a>
+                            <br><br>
                             
-                            
-                        <div class="row table-responsive">
-                            
-                                <div class="card table-responsive">
-                                    <div class="card-block table-responsive">
-                                        <div class="card-title-block table-responsive">
-                                            <h3 class="title">
-                            
-                        </h3> </div>
-                                        <section class="example">
-                                            <table class="table table-bordered table-hover" style="width:100%" >
+                        <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos de la Cartera de clientes
+                        </div>
+                        <!-- /.panel-heading -->
+
+                        <div class="panel-body">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                 <thead align="center">
                                                     <tr>
-                                                        <th></th>
+                                                        
                                                         <th>Fotos</th>
                                                         <th>Nombres</th>
                                                         <th>Apellidos</th>
@@ -380,11 +376,13 @@ jQuery(function($) {
                                                         <th>F. Registro</th>
                                                         <th>Telefono</th>
                                                         <th>Sexo</th>
-                                                        <th colspan="2" align="center">Acciones</th>
+                                                        <th colspan="1" align="center">Acción</th>
+                                                        <th colspan="1" align="center">Ver</th>
                                                        
                                                     </tr>
                                                 </thead>
-                                                <tbody id="hola">
+                                                <tbody id="hola" class="buscar">
+
                                                   @foreach($emple as $emple)
                                                   
                                                   <?php
@@ -393,7 +391,7 @@ jQuery(function($) {
                                                   ?>
 
                                                     <tr>
-                                                         <td></td>
+                                                        
                                                          <td>
                                                          <img src="../imagenes/{{ $emple->fotoEmp }}" alt="Foto" style="width:60px;height:60px;">
                                                 </td>
@@ -409,18 +407,22 @@ jQuery(function($) {
 
                                                         
 
-                                                          <td><a href="#"   class="btn btn-info btn-sm" data-id="{{ $emple->id }}" data-toggle="modal" data-target="#Edit{{ $emple->id }}">Modificar</a>
+                                                          
 
                 
-                                                           </td>
-                                                        @if($emple->estadoEmp==true)
-                                                            <td><button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$emple->id}}">A c t i v o</button></td>
-                                                        @endif
+                                                           <td>
+                                                        {!!Form::open(['route'=>['carteras.show',$emple->id],'method'=>'GET'])!!}
+                                                        <input type="submit" name="" value="Creditos"   class="btn btn-info btn-sm active " >
+                                                        {!!Form::close()!!}   
 
-                                                        @if($emple->estadoEmp==false)
-                                                            <td><button type="submit"  class="btn btn-sm gris" data-toggle="modal" data-target="#gridSystemModal3{{$emple->id}}">Desactivo</button></td>
-                                                        @endif
-                                                    </tr>
+                                                        </td>
+
+                                                         <td>
+                                                        {!!Form::open(['route'=>['prove.show',$emple->id],'method'=>'GET'])!!}
+                                                        <input type="submit" name="" value="Histotial"   class="btn btn-info btn-sm active " >
+                                                        {!!Form::close()!!}   
+
+                                                        </td>
 
                                                         
                                                    
@@ -429,11 +431,13 @@ jQuery(function($) {
                                                       @endforeach  
                                                 </tbody>
                                             </table>
-                                        </section>
-                                    </div>
-                                
-                            </div>
-                           </div>
+                                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
                            </section>
                            </article>
 
@@ -443,5 +447,29 @@ jQuery(function($) {
    
   
 {!! Html::script('js/script3.js') !!}
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
 
  @endsection

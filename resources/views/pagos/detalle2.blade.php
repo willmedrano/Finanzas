@@ -155,10 +155,11 @@ h2,h1,span
     </h1>
 
 
-                        <p class="title-description"> Productos  </p>
+                        <p class="title-description"> cuotas  </p>
                     </div>
-
-<button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$pro->id}}">Realizar Pago</button>
+<div align="center">
+<button type="submit"  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal2{{$pro->id}}">Realizar Pago</button>
+</div>
 <br><br>
             <div class="row">
                 <div class="col-lg-12">
@@ -173,7 +174,7 @@ h2,h1,span
                                 <thead>
                                     <tr>
                                                         <th>Numero de cuota</th>
-                                                        <th>Fecha de pago </th>
+                                                        <th>Fecha Cancelacion </th>
                                                         
                                                         <th>Monto por Cuota</th>
                                                         <th>Mora Pagada</th>
@@ -188,18 +189,21 @@ h2,h1,span
                                                 </thead>
                                                 <tbody class="buscar">
 
-                                                <?php $total=0 ?>
+                                                <?php $total=0; $total2=0; $total3=0; $cont=1; ?>
                                                       @foreach($lotes as $pro2)
                                                    
                                                     <tr class="v">
                                                         
-                                                        <th scope="row" >{{ $pro2->id }}</th>
+                                                        <th scope="row" ><?php echo $cont; ?></th>
+                                                        <?php $cont++?>
                                                         <td>{{ $pro2->fecha }}</td>
                                                         
                                                         <td> $ {{ $pro2->monto}}</td>
                                                         <td> $ {{ $pro2->mora}}</td>
                                                         <td>{{ $pro2->total }}</td>
-  
+                                                        <?php $total=$total+$pro2->total;?>
+                                                          <?php $total2=$total2+$pro2->mora;?>
+                                                          <?php $total3=$total3+$pro2->monto;?>
                                                     </tr>
                                                     
                                                    @endforeach 
@@ -208,8 +212,10 @@ h2,h1,span
                                                     
                                                     <tr align="center">
                                                        
-                                                        <!--td colspan="4"><p style="font-weight: bold;">Total</p></td>
-                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total,2)?></p></td-->
+                                                        <td colspan="2"><p style="font-weight: bold;">Total</p></td>
+                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total3,2);?></p></td>
+                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total2,2);?></p></td>
+                                                        <td colspan="1" ><p style="font-weight: bold;"><?php echo round($total,2);?></p></td>
                                                        
 
                                                     </tr>

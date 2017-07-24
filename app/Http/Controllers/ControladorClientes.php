@@ -83,6 +83,8 @@ class ControladorClientes extends Controller
             'dirEmp'=>$request['dir'],
             'telEmp'=>$request['tel1'],
             'sexEmp'=>$request['sexo'],
+            'registro'=>$request['registro'],
+            
             
             ]);
                 //$usuario=User::find($id);
@@ -146,6 +148,9 @@ class ControladorClientes extends Controller
         //$trab->sueldoEmp = $request['salario'];
         //$trab->cargoEmp = $request['cargo'];
         $trab->sexEmp = $request['sexo'];
+        $trab->categoria = $request['categoria'];
+        $trab->ing = $request['ing'];
+
         //$trab->sexEmp = $request['sexo'];correoEmp
         //$trab->contraEmp = $request['desc'];
         }

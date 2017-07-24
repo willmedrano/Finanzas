@@ -98,19 +98,22 @@ class controlPago extends Controller
         if($ids==$cuota->cuotas)
         {
             $cuota->estado=false;
+            $cuota->save();
+            $cli =\App\cliente::find($cuota->);
             
         }
         else{
             $dt=$cuota->fecha;
             $cuota->fecha=date("Y-m-d", strtotime("$dt +1 month"));
+            $cuota->save();
 
         }
-$cuota->save();
+
 
          
 
        // Session::flash('mensaje','¡Registro Actualizado!');
-        return redirect('/pagos');
+        return redirect('/carteras/create');
     }
 
     /**

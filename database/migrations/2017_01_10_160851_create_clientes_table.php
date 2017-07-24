@@ -19,12 +19,15 @@ class CreateClientesTable extends Migration
              $table->string('apeEmp');
              $table->date('NacEmp');
              $table->Double('ing');             
-             $table->string('DUIEmp')->unique();
-             $table->string('NITEmp')->unique();
+             $table->string('DUIEmp');
+             $table->string('NITEmp');
              $table->string('dirEmp');
-             $table->string('telEmp')->unique();
+             $table->string('telEmp');
              $table->string('sexEmp');
              $table->boolean('estadoEmp')->default(true);
+           
+             $table->string('registro');
+             $table->integer('categoria')->default(1);
              $table->timestamps();
         });
     }

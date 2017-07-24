@@ -40,11 +40,11 @@ h2,h1,span
                         <h1 class="title">
     
 
-        Creditos Pendientes : {{ $cli->nomEmp }}
+        Historial de credito
     </h1>
 
 
-                        <p class="title-description"> Creditos  </p>
+                        <p class="title-description"> creditos  </p>
                     </div>
 
 
@@ -52,7 +52,7 @@ h2,h1,span
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Datos de la Tabla de los creditos
+                            Datos de la Tabla de los Creditos
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -70,7 +70,6 @@ h2,h1,span
                                                          <th>Monto por cuota</th>
                                                         <th>Acciones</th>
                                                         
-                                                        
                                                          
                                                        
                                                     </tr>
@@ -79,7 +78,7 @@ h2,h1,span
 
                                                 <?php $total=0; $con=1; ?>
                                                      @foreach($lotes as $pro)
-                                                   @if($pro->estado==true)
+                                                   @if($pro->estado!=true)
                                                     <tr class="v">
                                                         
                                                         <th scope="row" ><?php echo $con;?></th>
@@ -101,7 +100,7 @@ h2,h1,span
 
                                                         <td>
                                                         {!!Form::open(['route'=>['pagos.show',$pro->id],'method'=>'GET'])!!}
-                                                        <input type="submit" name="" value="Pagar"   class="btn btn-info btn-sm active " >
+                                                        <input type="submit" name="" value="Detalle"   class="btn btn-info btn-sm active " >
                                                         {!!Form::close()!!}   
 
                                                         </td>

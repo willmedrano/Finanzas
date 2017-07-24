@@ -52,12 +52,26 @@ class ventas extends Controller
         $producto1=\App\cliente::find(1);
         $producto1->id=0;
         $producto1->nomEmp="";
+        $producto1->ing=0;
+
 
         foreach ($pro as $pro2) {
             # code...
             if($pro2->id==$codigopro)
             {
                 $producto1=\App\cliente::find($codigopro);
+                $producto1->ing=($producto1->ing-200);
+
+                $lotes = \App\pago::where('idCli',$codigopro)->get();
+                for($cont=0; $cont<count($lotes); $cont++){
+                    # code...
+                    if($lotes[$cont]->estado==true)
+                    {
+                        $producto1->ing=$producto1->ing-$lotes[$cont]->monto;
+                    }
+                }
+
+         //$cli=\App\cliente::find($id);
             }
         }
         

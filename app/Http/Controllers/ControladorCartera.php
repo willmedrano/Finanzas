@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class ControladorCartera extends Controller
 {
     /**
@@ -55,6 +55,11 @@ class ControladorCartera extends Controller
     public function show($id)
     {
         //
+        // $lotes=\App\pago::All();
+         $lotes = \App\pago::where('idCli',$id)->get();
+         $cli=\App\cliente::find($id);
+        //$lotes=\App\cuota::where('idPago',$pro->id)->get();
+        return view('pagos.index',compact('lotes','cli'));
     }
 
     /**

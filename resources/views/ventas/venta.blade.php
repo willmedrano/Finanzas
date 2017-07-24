@@ -93,8 +93,7 @@ h2,h1,span
                                                         
                                                         <div class="col-md-6">
                                                             
-                                                            <input id="codC" name="codC" type="text" placeholder="Codigo del Cliente" class="form-control" value="
-">
+                                                            <input id="codC" name="codC" type="text" placeholder="Codigo del Cliente" class="form-control" value="" required="">
                                 
                                                         </div>
 
@@ -108,12 +107,26 @@ h2,h1,span
                                                         <div class="col-md-6">
                                                            
                                                                 <input id="clien" name="clien" type="text" placeholder="Nombre del Cliente" class="form-control" value="" readonly="readonly" required>
-                                
+                                                                <input type="hidden" id="max" name="max" value="0">
+                                                                <input type="hidden" id="min" name="min" value="0">
                                                         
                                                             
                                                         </div>
 
                                                     </div>
+                                                    <div class="form-group">
+                            
+                                                        <span class="col-md-2  text-center">
+                                                        <label >Capacidad Crediticia: </label></span>
+                            
+                                                        <div class="col-md-5">
+
+                                                            <input id="prima2" name="prima2" type="text" placeholder="Credito maximo para el cliente" class="form-control" value="" readonly="">  
+                                                        
+                                                        </div>
+
+                                                    </div>
+
                                                     <div class="form-group">
                             
                                                         <span class="col-md-2  text-center">
@@ -152,7 +165,7 @@ h2,h1,span
                             
                                                         <div class="col-md-5">
 
-                                                            <input id="fecha" name="fecha" type="date" placeholder="% de descuento" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>">  
+                                                            <input id="fecha" readonly="" name="fecha" type="date" placeholder="% de descuento" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>">  
                                                         
                                                         </div>
 
@@ -164,7 +177,7 @@ h2,h1,span
                                                     
                                                         <div class="col-xs-5">
                                                             
-                                                             <input id="tipo" name="tipo" type="text" placeholder="sub-total" class="form-control" value="<?php echo round(($total-($total*0.13)),2);
+                                                             <input id="tipo" name="tipo" readonly="" type="text" placeholder="sub-total" class="form-control" value="<?php echo round(($total-($total*0.13)),2);
                                                             ?>">
                                                         
                                                         </div>
@@ -177,7 +190,7 @@ h2,h1,span
                             
                                                         <div class="col-md-3">
                                                             
-                                                            <input id="iva" name="iva" type="text" placeholder="IVA agregado " class="form-control" value="<?php echo round(($total*0.13),2);
+                                                            <input id="iva" name="iva" readonly="" type="text" placeholder="IVA agregado " class="form-control" value="<?php echo round(($total*0.13),2);
                                                             ?>">
 
                                                         </div>
@@ -192,7 +205,7 @@ h2,h1,span
                                                         
                                                         <div class="col-xs-5">
 
-                                                            <input id="total" name="total" type="text" placeholder="Total a pagar" class="form-control" value="<?php echo $total;
+                                                            <input id="total" name="total" readonly="" type="text" placeholder="Total a pagar" class="form-control" value="<?php echo $total;
                                                             ?>">
                                                             <input type="hidden" name="cx" id="cx" value="<?php echo $total;
                                                             ?>">
@@ -206,7 +219,7 @@ h2,h1,span
                                                         
                                                         <div class="col-xs-5">
                                 
-                                                            <input id="cuotas" name="cuotas" type="text" placeholder="Total a pagar por cuota" class="form-control" value="<?php echo round((($total/6)+(($total/6)*0.1)),2)?>">
+                                                            <input id="cuotas" name="cuotas" readonly="" type="text" placeholder="Total a pagar por cuota" class="form-control" value="<?php echo round((($total/6)+(($total/6)*0.25)),2)?>">
                                                         </div>
 
                                                     </div>
@@ -218,7 +231,7 @@ h2,h1,span
                             
                                                         <div class="col-md-7">
                                                             
-                                                            <textarea rows="2" class="form-control" id="des" name="des" placeholder="Agregue la descripcion de la venta" rows="7"></textarea>
+                                                            <textarea rows="2" class="form-control" id="des" name="des" placeholder="Agregue la descripcion de la venta" rows="7" required=""></textarea>
                                                         
                                                          </div>
 
@@ -233,7 +246,7 @@ h2,h1,span
                                             
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                             
-                                            <button type="submit" class="btn btn-primary">Vender</button>
+                                            <button type="submit" class="btn btn-primary" id="vender" name="vender">Vender</button>
                                         
                                         </div>
                                         {!! Form::close() !!}
@@ -879,6 +892,22 @@ document.getElementById('codC').addEventListener('input', function()//aqui se ej
 
 
             $("#clien").val(value.nomEmp);
+            monto=(value.ing);
+            $("#prima2").val(value.ing)
+            $("#min").val(monto);
+
+            max=$('#cuotas').val();
+            $("#max").val(max);
+            if(max>monto)
+            {
+                //alert("El monto del cliente para credito es :"+monto);
+                document.frm2.vender.disabled = true;
+
+            }
+            else{
+                document.frm2.vender.disabled = false;
+            }
+
             //$("#clien").val("cliente sin mensualidad")
             }); 
         }); 
@@ -897,6 +926,7 @@ $('#modal-body').on('change','#prima',function (){
     y=parseFloat($("#cx").val());
     w=$("#prima").val();
     $("#total").val(y);
+    monto=parseFloat($("#min").val());
     if(isNaN(w))
     {
 
@@ -904,11 +934,23 @@ $('#modal-body').on('change','#prima',function (){
         $("#total").val(y);
         $("#prima").val(0);
 
+        
         var posicion=document.getElementById('formap').options.selectedIndex; //posicion
           var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
-             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.25);
             $("#cuotas").val(x.toFixed(2));
+             max=parseFloat($("#cuotas").val());
+        
+            if(max>monto)
+            {
 
+   document.frm2.vender.disabled = true;
+
+            }
+            else{
+                
+                document.frm2.vender.disabled = false;
+            }
     }
     else 
         {
@@ -920,8 +962,19 @@ $('#modal-body').on('change','#prima',function (){
                 $("#prima").val(0);
                 var posicion=document.getElementById('formap').options.selectedIndex; //posicion
           var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
-             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.25);
             $("#cuotas").val(x.toFixed(2));
+             max=parseFloat($("#cuotas").val());
+        
+            if(max>monto)
+            {
+                document.frm2.vender.disabled = true;
+
+            }
+            else{
+               
+                document.frm2.vender.disabled = false;
+            }
 
                
     
@@ -931,8 +984,19 @@ $('#modal-body').on('change','#prima',function (){
                  $("#prima").val(0);
                 var posicion=document.getElementById('formap').options.selectedIndex; //posicion
           var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
-             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.25);
             $("#cuotas").val(x.toFixed(2));
+            max=parseFloat($("#cuotas").val());
+        
+            if(max>monto)
+            {
+                document.frm2.vender.disabled = true;
+
+            }
+            else{
+                
+                document.frm2.vender.disabled = false;
+            }
 
             }
             else if(y>=c){
@@ -944,8 +1008,19 @@ $('#modal-body').on('change','#prima',function (){
                     $("#total").val(x.toFixed(2));
                      var posicion=document.getElementById('formap').options.selectedIndex; //posicion
           var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
-             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.25);
             $("#cuotas").val(x.toFixed(2));
+             max=parseFloat($("#cuotas").val());
+        
+            if(max>monto)
+            {
+                document.frm2.vender.disabled = true;
+
+            }
+            else{
+                
+                document.frm2.vender.disabled = false;
+            }
 
                      
     
@@ -955,8 +1030,19 @@ $('#modal-body').on('change','#prima',function (){
                     $("#prima").val(0);
                    var posicion=document.getElementById('formap').options.selectedIndex; //posicion
           var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
-             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.25);
             $("#cuotas").val(x.toFixed(2));
+            max=parseFloat($("#cuotas").val());
+        
+            if(max>monto)
+            {
+                document.frm2.vender.disabled = true;
+
+            }
+            else{
+               
+                document.frm2.vender.disabled = false;
+            }
 
 
                 }
@@ -969,8 +1055,18 @@ function seleccionTipopago() {
            
           var posicion=document.getElementById('formap').options.selectedIndex; //posicion
           var j=parseFloat(document.getElementById('formap').options[posicion].text); //valor
-             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.1);
-            $("#cuotas").val(x.toFixed(2));                                            
+             x=parseFloat($("#total").val()/j)+(($("#total").val()/j)*0.25);
+            $("#cuotas").val(x.toFixed(2));       
+            max=parseFloat($("#cuotas").val());
+                 monto=parseFloat($("#min").val());
+            if(max>monto)
+            {
+                document.frm2.vender.disabled = true;
+
+            }
+            else{
+                document.frm2.vender.disabled = false;
+            }                                     
         }
 
 

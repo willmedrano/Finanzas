@@ -32,6 +32,7 @@ h2,h1,span
                     <h1 align="center">Tabla Bitacora</h1>
                                         
                           
+                          <br><br>
 
                     <div class="card-title-block">
                                      <div class="card-title-block">
@@ -54,7 +55,7 @@ h2,h1,span
 
 
                             
-                                <button type="submit"  class="btn btn-primary btn-lg">Imprimir</button>
+                                <a href="javascript:window.print();" class="btn btn-primary btn-lg">Reporte</a>
                             
                             
                         <div class="row table-responsive">

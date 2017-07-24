@@ -66,6 +66,9 @@ class controladorproveedor2 extends Controller
     public function show($id)
     {
         //
+        $lotes = \App\pago::where('idCli',$id)->get();
+        //$lotes=\App\cuota::where('idPago',$pro->id)->get();
+        return view('carteras.historial',compact('lotes'));
     }
 
     /**

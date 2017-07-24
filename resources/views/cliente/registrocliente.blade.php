@@ -150,6 +150,9 @@ jQuery(function($) {
                                                 <div class="col-xs-4">
                                                     <input id="tel" name="tel1" type="text" placeholder="Telefono " class="form-control" required="">
                                                 </div>
+                                                 <div class="col-xs-4" align="left">
+                                                    <input name="registro" id="registro"  type="text" placeholder="Ingrese # de Registro" class="form-control" required>
+                                                </div>
 
                                                  
 

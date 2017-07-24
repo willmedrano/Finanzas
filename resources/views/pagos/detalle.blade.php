@@ -155,11 +155,11 @@ h2,h1,span
     </h1>
 
 
-                        <p class="title-description"> Productos  </p>
+                        <p class="title-description"> Cuotas </p>
                     </div>
 
 <button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$pro->id}}">Realizar Pago</button>
-<br><br>
+<br><br><br>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-primary">

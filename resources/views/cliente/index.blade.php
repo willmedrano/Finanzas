@@ -237,8 +237,8 @@ jQuery(function($) {
                 <tr>
                    <td align="right" nowrap="nowrap"><span class="text-center" ><label >Telefono: </label></span></td>
                     <td colspan="2" align="center" ><input id="tel" name="telEmp" type="text" value="{{ $cat->telEmp }}" placeholder="telefono" class="form-control" required><br></td>
-                    <td></td>
-                    <td></td>
+                    <td><span class="text-center" >Salario:</span></td>
+                    <td><input id="ing" name="ing" type="text" value="{{ $cat->ing }}" placeholder="Ingreso Mensual" class="form-control" required><br></td>
                    
                     
                </tr>
@@ -246,7 +246,7 @@ jQuery(function($) {
 
                <tr>
                    <td align="right" nowrap="nowrap"><span class="text-center" ><label >Sexo: </label></span></td>
-                    <td colspan="3" align="center" >
+                    <td colspan="2" align="center" >
                     <?php $c=0; 
                           $d=0;
                     ?>
@@ -302,15 +302,33 @@ jQuery(function($) {
                       
                     
                         <br>
-                    </td>
-                    <td></td>
-                    <td></td>
+                    </td >
+                    <td align="center"><span class="text-center" ><label >Categoria: </label></span></td>
+                    <td >  
+            
+              <select  name="categoria" class="form-control">
+                                
+                                  
+                                      <option  value="2" selected="true"  >A</option>
+                                      <option  value="3" >B</option>
+                                       <option  value="4" >C</option>
+
+                                     
+                                 
+                                  
+                            
+                        </select>
+
+                                
+                      
+                    
+                        <br></td>
                     <td></td>
                     
                </tr>
                 <tr>
                    <td align="right" nowrap="nowrap"> <span class="text-center" ><label >Direccion: </label></span></td>
-                    <td colspan="4"><textarea rows="1" class="form-control" id="message" name="dir" placeholder="Direccion" required >{{ $cat->dirEmp }}</textarea> </td>
+                    <td colspan="4"><textarea rows="2" class="form-control" id="message" name="dir" placeholder="Direccion" required >{{ $cat->dirEmp }}</textarea> </td>
                     <br>
                     <td></td>
                     <td></td>
@@ -356,19 +374,19 @@ jQuery(function($) {
 
 
                             
-                                <button type="submit"  class="btn btn-primary btn-lg">Imprimir</button>
+                                <a href="javascript:window.print();" class="btn btn-primary btn-lg">Reporte</a>
+                            <br><br>
                             
-                            
-                        <div class="row table-responsive">
-                            
-                                <div class="card table-responsive">
-                                    <div class="card-block table-responsive">
-                                        <div class="card-title-block table-responsive">
-                                            <h3 class="title">
-                            
-                        </h3> </div>
-                                        <section class="example">
-                                            <table class="table table-bordered table-hover" style="width:100%" >
+                        <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos de la Cartera de clientes
+                        </div>
+                        <!-- /.panel-heading -->
+
+                        <div class="panel-body">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                 <thead align="center">
                                                     <tr>
                                                         
@@ -382,11 +400,12 @@ jQuery(function($) {
                                                         <th>F. Registro</th>
                                                         <th>Telefono</th>
                                                         <th>Sexo</th>
-                                                        <th colspan="2" align="center">Acciones</th>
+                                                        <th colspan="1" align="center">Acción</th>
+                                                       <th colspan="1" align="center">Acción</th>
                                                        
                                                     </tr>
                                                 </thead>
-                                                <tbody id="hola">
+                                                <tbody id="hola" class="buscar">
                                                   @foreach($emple as $emple)
                                                   
                                                   <?php
@@ -432,13 +451,15 @@ jQuery(function($) {
 
                                                     
                                                       @endforeach  
-                                                </tbody>
+                                            </tbody>
                                             </table>
-                                        </section>
-                                    </div>
-                                
-                            </div>
-                           </div>
+                                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
                            </section>
                            </article>
 
@@ -448,5 +469,29 @@ jQuery(function($) {
    
   
 {!! Html::script('js/script3.js') !!}
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
 
  @endsection
