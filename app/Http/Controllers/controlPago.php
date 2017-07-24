@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+
 
 class controlPago extends Controller
 {
@@ -17,6 +19,8 @@ class controlPago extends Controller
     public function index()
     {
         //
+         $lotes = \App\pago::All();
+        return view('pagos.index',compact('lotes')); 
     }
 
     /**
@@ -49,6 +53,9 @@ class controlPago extends Controller
     public function show($id)
     {
         //
+        $pro=\App\pago::find($id);
+        $lotes=\App\cuota::where('idPago',$pro->id)->get();
+        return view('pagos.detalle2',compact('pro','lotes'));
     }
 
     /**
@@ -72,6 +79,38 @@ class controlPago extends Controller
     public function update(Request $request, $id)
     {
         //
+        //$cuota=coutas::find($id);
+        //$aux=$request['hi2'];
+        //$t=$request['monto']+
+        \App\cuota::create([
+             'monto'=>$request['monto'],  
+             'fecha'=>$request['fecha'],
+             'mora'=>$request['mora'],
+             'total'=>$request['total'],
+             'idPago'=>$id,
+            ]);
+
+        $comp2 =\App\cuota::where('idPago',$id)->get();
+        
+        $ids=count($comp2);
+        
+        $cuota=\App\pago::find($id);
+        if($ids==$cuota->cuotas)
+        {
+            $cuota->estado=false;
+            
+        }
+        else{
+            $dt=$cuota->fecha;
+            $cuota->fecha=date("Y-m-d", strtotime("$dt +1 month"));
+
+        }
+$cuota->save();
+
+         
+
+       // Session::flash('mensaje','¡Registro Actualizado!');
+        return redirect('/pagos');
     }
 
     /**

@@ -98,11 +98,12 @@ class ventas extends Controller
                 //$v="+"+1+" month";
          $dt=$request['fecha'];
                 $dt =date("Y/m/d", strtotime("$dt +1 month"));
+                $prima=($request['total']+$request['prima']);
 
         \App\facturacion::create([
              
             'fechaf' => $request['fecha'],
-            'total' => $request['total'],
+            'total' => $prima,
             'idcliente' => $request['codC'],
             'numfact' => $request['codC'],
             'detalle' => $request['des'],

@@ -37,17 +37,129 @@ h2,h1,span
   
             
  <div class="title-block ">
+ <div id="gridSystemModal2{{$pro->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header alert-warning" bgcolor="blue">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="col-md-2  text-center" style="color: white;" >
+          <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        </span>
+          <h4 class="modal-title" id="gridModalLabel3" >Registar pago</h4>
+
+      </div>
+
+      <div class="modal-body" id="modal-body">
+
+        <div class="container-fluid bd-example-row">
+
+          {!!Form::model($pro,['method'=>'PATCH','route'=>['pagos.update',$pro->id]])!!}
+          
+              
+              <input type="hidden" name="hi" value="{{ $pro->estado }}">
+              <input type="hidden" name="hi2" value="3">
+              <br>
+              <div class="form-group">
+
+                  <span class="col-md-2  text-center" ><label >Monto: </label></span>
+                    
+                    <div class="col-md-6" id="mo">
+                        
+                        <input  readonly="" id="monto" name="monto" type="text" placeholder="monto a pagar"    class="form-control" value="{{ $pro->monto }}" >
+                        <span id="cajavendertexto"></span>
+                        <input type="hidden" id="max" name="max" value="{{ $pro->pendiente }}">
+                        <input type="hidden" id="min" name="min" value="{{ $pro->monto }}">
+
+                                
+                    </div>  
+              </div> 
+              <br><br><br>
+
+              <div class="form-group">
+
+                  <span class="col-md-2  text-center" ><label >Mora: </label></span>
+
+                    <div class="col-md-6">
+                        <?php
+                        $fp=$pro->fecha;
+                        $fa=dameFecha(date("Y-m-d"),0);
+                        $mor=0;
+                        
+                        while($fp<$fa) { 
+                                echo $fa;
+                                $fp =date("Y-m-d", strtotime("$fp +1 month"));
+                                $mor=$mor+($pro->monto*0.10);
+                                
+                                
+                        }
+                        
+                        ?>
+
+
+                      <input  id="mora" readonly="" name="mora" type="text" placeholder="" class="form-control" value="<?php echo $mor; ?>" readonly="">
+
+
+                    </div>
+              </div>
+              <br><br>
+
+              <div class="form-group">
+
+                <span class="col-md-2  text-center" ><label >Fecha: </label></span>
+                    
+                  <div class="col-md-6">
+                      
+                    
+
+                      <input id="fecha" name="fecha" type="date" readonly placeholder="% de descuento" class="form-control" value="<?php echo dameFecha(date("Y-m-d"),0);?>" > 
+
+                  </div>
+              </div>
+              <br><br>
+
+              <div class="form-group">
+
+                <span class="col-md-2  text-center" ><label >Total: </label></span>
+
+                  <div class="col-md-6">
+                            
+                    <input readonly="" id="total" name="total" type="text" placeholder="" class="form-control" value="<?php echo ($pro->monto+$mor)?>">
+                               
+                  </div>
+              </div>
+              <br>
+              <br>
+
+              <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+
+              </div>
+
+          {!!Form::close()!!}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
                         <h1 class="title">
     
 
-        PRODUCTO MÁS VENDIDO
+        Pagar Cuota
     </h1>
 
 
                         <p class="title-description"> Productos  </p>
                     </div>
 
-
+<button type="submit"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal2{{$pro->id}}">Realizar Pago</button>
+<br><br>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
@@ -55,20 +167,19 @@ h2,h1,span
                             Datos de la Tabla de los Productos
                         </div>
                         <!-- /.panel-heading -->
+
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                                        <th>Codigo</th>
-                                                        <th>proxima Fecha de pago </th>
+                                                        <th>Numero de cuota</th>
+                                                        <th>Fecha de pago </th>
                                                         
-                                                        <th>Monto Pendiente</th>
-                                                        <th>Monto por cuota</th>
-                                                        <th>Mora</th>
-                                                        <th>#cuotas</th>
-                                                        <th>sub-total</th>
+                                                        <th>Monto dfgjhfyitmnpor Cuota</th>
+                                                        <th>Mora Pagada</th>
+                                                        <th>Totalfddfghj pagado</th>
                                                         
-                                                        <th>Acciones</th>
+                                                       
                                                         
                                                         
                                                          
@@ -78,39 +189,20 @@ h2,h1,span
                                                 <tbody class="buscar">
 
                                                 <?php $total=0 ?>
-                                                     @foreach($lotes as $pro)
-                                                   @if($pro->estado==true)
+                                                      @foreach($lotes as $pro2)
+                                                   
                                                     <tr class="v">
                                                         
-                                                        <th scope="row" >{{ $pro->id }}</th>
-                                                        <td>{{ $pro->fecha }}</td>
-                                                        <td>{{ $pro->pendiente }}</td>
-                                                        <td> $ {{ $pro->monto}}</td>
-                                                        <td> $ {{ $pro->mora}}</td>
-                                                    
+                                                        <th scope="row" >{{ $pro2->id }}</th>
+                                                        <td>{{ $pro2->fecha }}</td>
                                                         
-
-                                                        <td>{{ $pro->cuotas }}</td>
-                                                        
-                                                        <td>{{ $pro->idCli}}</td>
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-
-                                                        <td>
-                                                        {!!Form::open(['route'=>['pagos.show',$pro->id],'method'=>'GET'])!!}
-                                                        <input type="submit" name="" value="Detalle"   class="btn btn-info btn-sm active " >
-                                                        {!!Form::close()!!}   
-
-                                                        </td>
-                                                  
-                                                       
+                                                        <td> $ {{ $pro2->monto}}</td>
+                                                        <td> $ {{ $pro2->mora}}</td>
+                                                        <td>{{ $pro2->total }}</td>
+  
                                                     </tr>
-                                                    @endif
-                                                    @endforeach
+                                                    
+                                                   @endforeach 
                                                 </tbody>
                                                 <tfoot>
                                                     
@@ -125,6 +217,9 @@ h2,h1,span
                                                 </tfoot>
                             </table>
                             <!-- /.table-responsive -->
+                            
+                                                        
+
                             
                         </div>
                         <!-- /.panel-body -->
@@ -233,4 +328,5 @@ $time=time();
 
 
   </script>
+
   @endsection

@@ -35,6 +35,7 @@ Route::resource('clientes',"ControladorClientes");
 Route::resource('carteras',"ControladorCartera");
 
 Route::resource('ventas',"ventas");
+Route::resource('pagos',"controlPago");
 Route::resource('aux4',"auxiliarControl2");
 Route::match(['get','post'],'/VerificarEPCaja/{codigopro}','ventas@VerificarEPCaja');
 Route::match(['get','post'],'/VerificarEPUnidades/{codigopro}','ventas@VerificarEPUnidades');
